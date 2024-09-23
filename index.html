@@ -1,48 +1,164 @@
 <!DOCTYPE html>
-<html lang = "en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>My Porfolio</title>
-        <link rel="stylesheet" href="styles.css">
-    </head>
-    <body>
-        <header>
-            <h1>My Porfolio</h1>
-        </header>
-        <div class="theme-container">
-            <span id = "themeToggle" class="theme-toggle">Dark</span>
-        </div>
-        <section id="intro" class="about">
-            <h2>About Me</h2>
-            <hr>
-            <p>Hello!! My name is Yuvi Shendge. Welcome to my Porfolio</p>
-        </section>
-        <section id = "Education" class="education">
-            <h2>Education</h2>
-            <hr>
-            <div>
-                <p>Student at UF...</p>
-            </div>
-        </section>
-        <section id="projects" class="projects">
-            <h2>My Projects</h2>
-            <hr>
-            <div class="project">
-                <h3>Example Project 1</h3>
-                <p>Project 1 Description</p>
-            </div>
-            <div class="project">
-                <h3>Example Project 2</h3>
-                <p>Project 2 Description</p>
-            </div>
-        </section>
-        <section id="contact" class="contact">
-            <h2>Contact</h2>
-            <hr>
-            <p>You can reach me at <a href="mailto:yshendge@ufl.edu">yshendge@ufl.edu</a></p>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="50">
 
-        </section>
-        <script src="script.js"></script>
-    </body>
+	<!-- Navbar -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="#">Yuvi Shendge</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#myNavbar" aria-controls="myNavbar" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="navbar-nav ms-auto">
+					<li class="nav-item active"><a class="nav-link" href="#home">Home</a></li>
+					<li class="nav-item"><a class="nav-link" href="#intro">Introduction</a></li>
+					<li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+					<li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+					<li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<!-- Home Section -->
+	<div class="jumbotron bg-light text-dark py-5" id="home">
+		<div class="container text-center">
+			<br>
+			<h1 class="display-4">Yuvi Shendge</h1>      
+			<h4 class="lead">Sophomore, Computer Science Student</h4>
+		</div>
+	</div>
+
+	<!-- Introduction Section -->
+	<div class="container-fluid text-center py-5" id="intro">
+		<h2>Introduction</h2><br>
+		<div class="row justify-content-center">
+			<div class="col-sm-4">
+				<img src="images/pfp.PNG"  alt="Profile Image">
+			</div>
+			<div class="col-sm-6">
+				<p>
+					Hi! I'm Yuvika Shendge, currently a Computer Science major at the University of Florida. 
+					I’m passionate about full-stack development and data science. I have experience in Python, C++, Java, and web technologies like HTML/CSS. 
+					I’ve worked on multiple projects, from creating an app that pairs study buddies to analyzing Olympic data for predictive models.
+				</p>
+				<p>
+					My journey into tech started with hackathons, where I developed my skills in API integration, data analysis, and collaboration. 
+					Now, I'm building a mentorship matching app aimed at helping organizations across campus find the best mentor-mentee pairs.
+				</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- Skills Section -->
+	<div class="container-fluid bg-light text-center py-5" id="skills">
+		<h2>Skills</h2>
+		<div class="row">
+			<div class="col-md-6">
+				<h3>Technical Skills</h3>
+				<ul class="list-unstyled">
+					<li>Proficient in Python, C++, Java, HTML, CSS, and R</li>
+					<li>Experience with APIs and data analysis</li>
+					<li>Developed mobile apps and predictive models</li>
+					<li>Familiar with databases, algorithms, and full-stack development</li>
+				</ul>
+			</div>
+			<div class="col-md-6">
+				<h3>Non-Technical Skills</h3>
+				<ul class="list-unstyled">
+					<li>Leadership and team collaboration through hackathons and projects</li>
+					<li>Problem-solving and critical thinking</li>
+					<li>Public speaking and presenting technical solutions</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<!-- Projects Section -->
+	<div class="container-fluid text-center py-5" id="projects">
+		<h2>Projects</h2>
+		<div class="row">
+			<div class="col-md-4 offset-md-2">
+				<h3>Study Buddies</h3>
+				<a data-bs-toggle="modal" data-bs-target="#studybuddiesModal">
+					<img src="images/studyBuddies.PNG" class="img-fluid" alt="Study Buddies">
+				</a>
+			</div>
+			<div class="col-md-4">
+				<h3>Olympic Medal Predictor</h3>
+				<a data-bs-toggle="modal" data-bs-target="#medalpredictorModal">
+					<img src="images/olympicPic.PNG" class="img-fluid" alt="Olympic Predictor">
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<!-- Study Buddies Modal -->
+	<div class="modal fade" id="studybuddiesModal" tabindex="-1" aria-labelledby="studybuddiesLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 class="modal-title" id="studybuddiesLabel">Study Buddies</h3>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<img src="images/studyBuddies.PNG" class="img-fluid mb-3" alt="Study Buddies">
+					<h5>Language: Python, Flask <br> 2023</h5>
+					<p>
+						Study Buddies is a web app that matches students with similar study habits and preferences. 
+						Using a custom algorithm, it optimizes pairing to ensure students are matched with their ideal study partners. 
+						My role involved designing the backend logic and implementing a user-friendly interface.
+					</p>
+					<a href="https://github.com/[YourGitHub]/study-buddies" target="_blank" class="btn btn-primary">GitHub</a>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Olympic Medal Predictor Modal -->
+	<div class="modal fade" id="medalpredictorModal" tabindex="-1" aria-labelledby="medalpredictorLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 class="modal-title" id="medalpredictorLabel">Olympic Medal Predictor</h3>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<img src="images/olympicPic.PNG" class="img-fluid mb-3" alt="Olympic Predictor">
+					<h5>Language: Python, Pandas <br> 2024</h5>
+					<p>
+						Analyzed historical Olympic data to create a machine learning model that predicts how many medals each country will win in the 2024 Summer Olympics. 
+						The project used data wrangling and feature engineering to improve prediction accuracy.
+					</p>
+					<a href="https://github.com/[YourGitHub]/olympic-medal-predictor" target="_blank" class="btn btn-primary">GitHub</a>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Contact Section -->
+	<div class="container-fluid bg-light text-center py-5" id="contact">
+		<h2>Contact</h2>
+<h5><a href="mailto:yuvi.shendge@gmail.com">Email </a> | 
+<a href="https://www.linkedin.com/in/yuvi-shendge/" target="_blank">LinkedIn </a></h5 >
+
+	<!-- Bootstrap JS -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="script.js"></script>
+</body>
 </html>
