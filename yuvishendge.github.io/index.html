@@ -1,0 +1,617 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Yuvi Shendge — Data & Web Portfolio</title>
+
+  <style>
+    /* ===== base & starry night theme ===== */
+    :root{
+      --bg:#050507;
+      --panel:#0e0f13;
+      --muted:#bfc7d1;
+      --accent:#8be9fd;
+      --accent-2:#ff79c6;
+      --glass: rgba(255,255,255,0.04);
+      --glass-2: rgba(255,255,255,0.02);
+      --glass-border: rgba(255,255,255,0.06);
+      --glass-border-2: rgba(139,233,253,0.08);
+      --max-width:1100px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+      --round:14px;
+    }
+    html,body{height:100%;}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: radial-gradient(ellipse at 30% 10%, rgba(139,233,253,0.04) 0%, transparent 20%),
+                  linear-gradient(180deg,#050507,#07070a 60%);
+      color:#e6eef6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.6;
+    }
+
+    /* Enhanced star field with three layers */
+    .stars { 
+      position:fixed; 
+      inset:0; 
+      pointer-events:none; 
+      z-index:0;
+    }
+    
+    .stars-layer {
+      position: absolute;
+      inset: 0;
+      background-repeat: repeat;
+    }
+    
+    .stars-layer.layer-1 {
+      background-image: 
+        radial-gradient(2px 2px at 20% 30%, white, transparent),
+        radial-gradient(2px 2px at 60% 70%, white, transparent),
+        radial-gradient(1px 1px at 50% 50%, white, transparent),
+        radial-gradient(1px 1px at 80% 10%, white, transparent),
+        radial-gradient(2px 2px at 90% 60%, white, transparent),
+        radial-gradient(1px 1px at 33% 80%, white, transparent),
+        radial-gradient(2px 2px at 15% 90%, white, transparent);
+      background-size: 200px 200px;
+      animation: twinkle1 8s ease-in-out infinite;
+      opacity: 0.8;
+    }
+    
+    .stars-layer.layer-2 {
+      background-image: 
+        radial-gradient(1px 1px at 40% 20%, white, transparent),
+        radial-gradient(1px 1px at 70% 80%, white, transparent),
+        radial-gradient(1px 1px at 10% 60%, white, transparent),
+        radial-gradient(1px 1px at 85% 40%, white, transparent),
+        radial-gradient(1px 1px at 25% 10%, white, transparent);
+      background-size: 250px 250px;
+      animation: twinkle2 6s ease-in-out infinite;
+      opacity: 0.6;
+    }
+    
+    .stars-layer.layer-3 {
+      background-image: 
+        radial-gradient(1px 1px at 15% 45%, white, transparent),
+        radial-gradient(1px 1px at 55% 25%, white, transparent),
+        radial-gradient(1px 1px at 75% 65%, white, transparent),
+        radial-gradient(1px 1px at 35% 85%, white, transparent);
+      background-size: 300px 300px;
+      animation: twinkle3 10s ease-in-out infinite;
+      opacity: 0.4;
+    }
+    
+    @keyframes twinkle1 {
+      0%, 100% { opacity: 0.8; }
+      50% { opacity: 0.5; }
+    }
+    
+    @keyframes twinkle2 {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 0.3; }
+    }
+    
+    @keyframes twinkle3 {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 0.2; }
+    }
+
+    /* layout container */
+    .wrap{max-width:var(--max-width); margin:60px auto; padding:40px; position:relative; z-index:2;}
+    header{display:flex;gap:24px; align-items:center; justify-content:space-between; margin-bottom:32px;}
+    .brand{display:flex;gap:18px; align-items:center;}
+    .logo{
+      width:68px; height:68px; border-radius:14px; display:grid;place-items:center;
+      background:linear-gradient(135deg,var(--accent), var(--accent-2));
+      box-shadow:0 6px 18px rgba(0,0,0,0.6), inset 0 -6px 18px rgba(255,255,255,0.04);
+      font-weight:700; color:#051014;
+      font-family:var(--mono); font-size:22px;
+    }
+    h1{font-size:24px;margin:0; letter-spacing:-0.02em;}
+    .tag{color:var(--muted); font-size:14px; margin-top:4px;}
+    nav{display:flex; gap:12px; align-items:center;}
+    nav a{color:var(--muted); text-decoration:none; font-size:15px; padding:10px 14px; border-radius:10px}
+    nav a:hover{background:var(--glass); color: #eaf8ff}
+
+    /* hero */
+    .hero{
+      display:grid; grid-template-columns: 1fr 380px; gap:32px; align-items:center;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+      border:1px solid var(--glass-border);
+      border-radius:20px; padding:32px; box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      backdrop-filter: blur(6px);
+      margin-bottom: 40px;
+    }
+    .hero-left h2{font-size:36px; margin:0 0 16px 0; line-height: 1.3; letter-spacing: -0.02em;}
+    .hero-left p{color:var(--muted); margin:0 0 20px 0; max-width:700px; font-size: 16px;}
+    .cta-row{display:flex; gap:12px; margin-top:20px; flex-wrap: wrap;}
+    .btn{
+      padding:12px 18px; border-radius:10px; border:1px solid var(--glass-border-2);
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      color: #e7fbff; cursor:pointer; font-weight:600; font-size:15px;
+      transition: all 0.2s;
+    }
+    .btn:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(139,233,253,0.2);
+    }
+    .btn.ghost{background:transparent; color:var(--muted); border:1px dashed rgba(255,255,255,0.03)}
+    .profile-card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+      border-radius:16px; padding:20px; text-align:center; border:1px solid var(--glass-border);
+    }
+    .pfp{width:180px;height:180px;border-radius:14px; object-fit:cover; display:block;margin:0 auto 12px auto; border:1px solid rgba(255,255,255,0.04)}
+    .small{font-size:14px;color:var(--muted); margin:8px 0; line-height: 1.5;}
+
+    /* quick benefits */
+    .benefits{display:flex; gap:12px; margin-top:20px; flex-wrap:wrap}
+    .benefit{background:var(--glass); padding:12px 16px; border-radius:10px; font-size:14px; color:var(--muted)}
+
+    /* sections */
+    section{margin-top:48px}
+    section h2{font-size: 28px; margin-bottom: 20px; letter-spacing: -0.02em;}
+    .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent); padding:24px; border-radius:14px; border:1px solid var(--glass-border)}
+    .card h3{margin:0 0 12px 0; font-size:18px}
+    .muted{color:var(--muted); font-size:14px; line-height: 1.6;}
+
+    /* skills */
+    .skills-grid{display:grid; grid-template-columns: 1fr 1fr; gap:16px; margin-top: 16px;}
+    .skill{display:flex; flex-direction:column; gap:8px; padding:14px; border-radius:10px; background:var(--glass-2); border:1px solid rgba(255,255,255,0.02)}
+    .skill .row{display:flex; justify-content:space-between; align-items:center; margin-bottom: 6px;}
+    .bar{height:10px; background:transparent; border-radius:10px; overflow:hidden; border:1px solid rgba(255,255,255,0.02)}
+    .bar > i{display:block; height:100%; background:linear-gradient(90deg,var(--accent),var(--accent-2)); width:0%; transition:width 900ms cubic-bezier(.2,.9,.2,1)}
+    .skill p{margin:0; font-size:14px; color:var(--muted); line-height: 1.5;}
+
+    /* project filters */
+    .filters{display:flex; gap:10px; margin-bottom:20px; flex-wrap:wrap}
+    .chip{padding:10px 16px; border-radius:999px; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.03); cursor:pointer; color:var(--muted); font-size: 14px; transition: all 0.2s;}
+    .chip:hover{background:rgba(255,255,255,0.04);}
+    .chip.active{background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#051014; font-weight:700}
+
+    .projects-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+    .project{padding:20px; border-radius:12px; background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent); border:1px solid var(--glass-border); cursor:pointer; transition:transform .2s}
+    .project:hover{transform:translateY(-4px)}
+    .project strong{font-size: 16px;}
+    .project .tags{margin-top:12px; display:flex; gap:8px; flex-wrap:wrap}
+    .tag{font-size:13px; padding:6px 10px; border-radius:999px; background:rgba(255,255,255,0.02); color:var(--muted)}
+
+    /* timeline */
+    .timeline{border-left:2px solid rgba(255,255,255,0.04); padding-left:24px}
+    .tl-item{position:relative; margin-bottom:28px}
+    .tl-item:before{content:""; position:absolute; left:-20px; top:6px; width:16px; height:16px; border-radius:50%; background:linear-gradient(90deg,var(--accent),var(--accent-2)); box-shadow:0 6px 12px rgba(0,0,0,0.5)}
+    .tl-item h4{margin:0 0px 6px 0; font-size:17px}
+    .tl-item p{margin:6px 0; color:var(--muted); font-size:14px; line-height: 1.6;}
+
+    /* NLP demo and resume area */
+    .demo{display:flex; gap:16px; align-items:flex-start; flex-wrap:wrap}
+    .demo .box{flex:1; min-width:280px; padding:20px; border-radius:14px; background:var(--panel); border:1px solid var(--glass-border); color:var(--muted)}
+    textarea{width:100%; min-height:140px; padding:14px; background:transparent; border:1px solid rgba(255,255,255,0.04); color: #eaf8ff; border-radius:10px; resize:vertical; font-size: 15px; line-height: 1.6;}
+    .result{padding:16px; border-radius:10px; background:linear-gradient(180deg, rgba(0,0,0,0.2), transparent); font-family:var(--mono); font-size:14px; color:var(--accent)}
+    .smallmuted{font-size:13px;color:var(--muted); margin-top:8px; line-height: 1.5;}
+
+    /* footer & contact */
+    footer{margin-top:48px; text-align:center; color:var(--muted); font-size:14px; padding: 32px 0;}
+    .contact-row{display:flex; gap:12px; align-items:center; justify-content:center; margin-top:16px}
+    .social a{color:var(--muted); text-decoration:none; padding:8px 14px; border-radius:8px}
+    .download{background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#051014; padding:12px 16px; border-radius:10px; font-weight:700; border:none; cursor:pointer}
+
+    /* responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr; text-align:center}
+      .grid{grid-template-columns:1fr;}
+      .projects-grid {grid-template-columns:repeat(2,1fr)}
+      .wrap{padding:24px}
+    }
+    @media (max-width:640px){
+      .projects-grid {grid-template-columns:1fr}
+      .skills-grid{grid-template-columns:1fr}
+      nav{display:none}
+      .brand h1{font-size:20px}
+      .hero-left h2{font-size:28px;}
+    }
+  </style>
+</head>
+<body>
+
+<div class="stars" aria-hidden="true">
+  <div class="stars-layer layer-1"></div>
+  <div class="stars-layer layer-2"></div>
+  <div class="stars-layer layer-3"></div>
+</div>
+
+<div class="wrap" role="main">
+  <header>
+    <div class="brand">
+      <div class="logo">YS</div>
+      <div>
+        <h1>Yuvi Shendge</h1>
+        <div class="tag">Data & Web • NLP • ML • Student @ University of Florida</div>
+      </div>
+    </div>
+
+    <nav aria-label="main-navigation">
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#demo">Playground</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="hero" aria-labelledby="hero-title">
+  <div class="hero-left">
+    <h2 id="hero-title">Turn data into stories</h2>
+<p>I’m a CS student at UF passionate about turning messy data into tools people can actually use. I build dashboards, predictive models, and NLP pipelines that make insights easy to understand and decisions easier to make.</p>
+
+    <div class="cta-row" role="region" aria-label="calls to action">
+      <button class="btn" id="downloadResume">Download Resume</button>
+      <button class="btn" id="contactMe">Contact Me</button>
+      <button class="btn" id="viewProjects">View Projects</button>
+    </div>
+
+    <!--<div class="benefits" aria-hidden="false">
+      <div class="benefit">Ready-to-deploy: Python, R, SQL</div>
+      <div class="benefit">Portfolio: Reproducible notebooks + dashboards</div>
+      <div class="benefit">Fast learner: NLP, econometrics, and applied ML</div>
+    </div>-->
+  </div>
+
+  <aside class="profile-card" aria-label="profile card">
+    <img src="images/Headshot.png" alt="Yuvi photo" class="pfp" onerror="this.style.display='none'">
+    <div style="font-weight:700; font-size: 16px;">Yuvi Shendge</div>
+    <div class="small">B.S. Computer Science • Minor: Business & Statistics</div>
+    <div class="smallmuted">UF • Expected May 2027 • US Citizen</div>
+    <div class="smallmuted" style="margin-top:10px">Orlando, FL — open to internships and relocation</div>
+  </aside>
+</div>
+
+<section id="skills" aria-labelledby="skills-heading">
+  <h2 id="skills-heading">Skills & Tools</h2>
+  
+  <div class="card" style="margin-top:10px">
+    <h3>Primary Languages</h3>
+    <div class="muted">Python • R • SQL • JavaScript • C++</div>
+    <div class="skills-grid" style="margin-top:16px">
+      <div class="skill">
+        <div class="row"><strong>Python</strong><span class="muted">Advanced</span></div>
+        <div class="bar"><i data-width="95%"></i></div>
+        <p>ETL, ML, NLP pipelines, and Streamlit dashboards that turn raw data into interactive stories. Reproducible notebooks on GitHub.</p>
+      </div>
+
+      <div class="skill">
+        <div class="row"><strong>R</strong><span class="muted">Intermediate</span></div>
+        <div class="bar"><i data-width="82%"></i></div>
+        <p>Regression, econometrics, and statistical analysis for actionable business insights.</p>
+      </div>
+
+      <div class="skill">
+        <div class="row"><strong>SQL & DB</strong><span class="muted">Intermediate</span></div>
+        <div class="bar"><i data-width="80%"></i></div>
+        <p>MariaDB and MongoDB schema design, stored procedures, and reporting pipelines to track performance and support decisions.</p>
+      </div>
+
+      <div class="skill">
+        <div class="row"><strong>Web</strong><span class="muted">Intermediate</span></div>
+        <div class="bar"><i data-width="78%"></i></div>
+        <p>React, Node, WordPress Multisite, accessibility optimization, and performance analytics for high-impact user experiences.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:18px; grid-template-columns: 1fr 1fr;">
+    <div class="card">
+      <h3>Data & ML Tooling</h3>
+      <div class="muted">Pandas • Scikit-Learn • TensorFlow • spaCy • NLTK • Tableau</div>
+      <p style="margin-top:8px">I create predictive models, NLP pipelines, and dashboards that translate complex datasets into clear, actionable insights for stakeholders and end users.</p>
+    </div>
+
+    <div class="card">
+      <h3>Why Work With Me</h3>
+      <ul style="margin-top:12px; color:var(--muted); font-size: 14px; line-height: 1.6;">
+        <li>Rapid prototyping: from notebook to interactive demo in Streamlit</li>
+        <li>Translate data into dashboards and visual insights for stakeholders</li>
+        <li>Communicate seamlessly across design, product, and data teams</li>
+        <li>Curious problem solver: I dig deep until the story behind the data is clear</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="projects" aria-labelledby="projects-heading">
+  <h2 id="projects-heading">Projects</h2>
+
+  <div class="filters" role="tablist" aria-label="project filters">
+    <div class="chip active" data-filter="all">All</div>
+    <div class="chip" data-filter="nlp">NLP / GenAI</div>
+    <div class="chip" data-filter="data">Data / Analytics</div>
+    <div class="chip" data-filter="web">Web / Product</div>
+  </div>
+
+  <div class="projects-grid" id="projectsGrid">
+    <div class="project-card" data-filter="web">
+      <h4>AI Assistant — UF Innovation Academy</h4>
+      <p>Built an AI assistant to guide 13,000+ students and parents. Developed user stories, wireframes, and dashboards to improve engagement and program navigation.</p>
+    </div>
+
+    <div class="project-card" data-filter="data">
+      <h4>Customer Feedback Dashboard</h4>
+      <p>Created the first repeatable analytics workflow for monthly student and parent feedback. Used SQL, Python, and Tableau to generate actionable insights and improve program decisions.</p>
+    </div>
+
+    <div class="project-card" data-filter="nlp">
+      <h4>Tech News Sentiment Generator</h4>
+      <p>Summarized 200+ tech articles and generated multi-tone tweets using an NLP pipeline. Reduced manual posting by 50% while maintaining high content relevance.</p>
+    </div>
+
+    <div class="project-card" data-filter="data">
+      <h4>Car Price Prediction Model</h4>
+      <p>Developed a predictive model on 500k+ vehicle listings, improving pricing accuracy by 10% and providing insights into dealership strategies.</p>
+    </div>
+
+    <div class="project-card" data-filter="web">
+      <h4>Big & Little Mobile App</h4>
+      <p>Managed a swipe-based mentorship app connecting students, improving engagement and retention by designing matching algorithms and iterating features based on user feedback.</p>
+    </div>
+  </div>
+</section>
+
+<section id="experience" aria-labelledby="experience-heading">
+  <h2 id="experience-heading">Experience & Leadership</h2>
+  <div class="timeline" style="margin-top:12px">
+    <div class="tl-item">
+      <h4>Web Developer — UF Innovation Academy</h4>
+      <p class="muted">May 2025 – Present</p>
+      <p>Developed an AI assistant improving navigation for 13,000+ users. Optimized WordPress Multisite for 22% higher accessibility compliance and 15% better SEO. Created the first SOP for monthly analytics, giving leadership actionable insights for the first time.</p>
+    </div>
+
+    <div class="tl-item">
+      <h4>Program Coordinator — Gator AI Camp</h4>
+      <p class="muted">May 2025 – Aug 2025</p>
+      <p>Coordinated logistics and designed feedback analysis in R and Excel to optimize curriculum and operations for 45+ participants.</p>
+    </div>
+
+    <div class="tl-item">
+      <h4>Technical Lead — E-Commerce Capstone</h4>
+      <p class="muted">Jan 2025 – Apr 2025</p>
+      <p>Led a 4-person team to deliver secure authentication, personalized product recommendations, and SQL/MongoDB reporting pipelines.</p>
+    </div>
+
+    <div class="tl-item">
+      <h4>Development Intern — Second Shot Lab</h4>
+      <p class="muted">Jan 2025 – Apr 2025</p>
+      <p>Prototyped an AI interview assistant, designed MongoDB schemas, and coordinated API research for facial expression analysis.</p>
+    </div>
+
+    <div class="tl-item">
+      <h4>Leadership & Outreach</h4>
+      <p class="muted">Outreach Lead, Society of PC Building • SASE Interns • Project mentor</p>
+    </div>
+  </div>
+</section>
+
+  <section id="demo" aria-labelledby="demo-heading">
+    <h2 id="demo-heading">Playground — Tiny NLP Sentiment Demo</h2>
+    <div style="margin-top:10px" class="demo">
+      <div class="box">
+        <label for="nlpInput" class="muted" style="font-weight: 600;">Paste text (news, tweet, or sentence)</label>
+        <textarea id="nlpInput" placeholder="Type or paste a sentence to see keyword highlights and an experimental sentiment score."></textarea>
+        <div style="display:flex; gap:10px; margin-top:12px">
+          <button class="btn" id="nlpRun">Analyze</button>
+          <button class="btn ghost" id="nlpClear">Clear</button>
+        </div>
+        <div class="smallmuted">This demo uses a simple keyword model to demonstrate the pipeline — tokenization, keyword detection, and scoring. Intentionally lightweight to run in-browser.</div>
+      </div>
+
+      <div class="box" style="min-width:320px">
+        <div class="result" id="nlpResult">No analysis yet</div>
+        <div style="margin-top:14px">
+          <div class="muted" style="font-weight: 600;">Highlights</div>
+          <div id="highlights" style="margin-top:10px"></div>
+        </div>
+        <div style="margin-top:14px">
+          <div class="muted" style="font-weight: 600;">Interpretation</div>
+          <div id="nlpInterpret" class="smallmuted">The tool estimates sentiment and points to keywords. For a full model, I fine-tune transformer models and use metrics like F1 and BLEU for evaluation.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <section id="contact" aria-labelledby="contact-heading">
+    <h2 id="contact-heading">Contact</h2>
+    <div style="margin-top:10px; display:flex; gap:12px; align-items:center; justify-content:center; flex-wrap:wrap">
+      <a href="mailto:yuvi.shendge@gmail.com" class="btn">Email</a>
+      <a href="https://www.linkedin.com/in/yuvi-shendge/" target="_blank" class="btn">LinkedIn</a>
+    </div>
+
+    <div style="margin-top:20px; color:var(--muted); text-align:center; font-size: 15px;">
+      <div>Prefer a quick chat? Click contact and say "hi" — I typically reply within 24 hours.</div>
+    </div>
+  </section>
+
+  <footer>
+     Yuvi Shendge — Built with curiosity • Data detective • UF CS
+  </footer>
+</div>
+
+<script>
+
+  /* ===== project catalog (used by the Project grid) ===== */
+  const PROJECTS = [
+    {id:'p1', title:"NLP Text Classification & Parsing", tags:["nlp","data"], tech:"Python, spaCy, NLTK, Transformers", blurb:"POS tagging, NER, CRFs and BERT embeddings. Achieved ~87% tagging accuracy and built a mini conversational agent prototype."},
+    {id:'p2', title:"Tech News Sentiment & Tweet Generator", tags:["nlp","data","genai"], tech:"Python, NLP, web scraping", blurb:"Automated scraping + summarization pipeline that generated multi-sentiment tweet drafts. Reduced manual posting time by 50%."},
+    {id:'p3', title:"Car Price Prediction Dashboard", tags:["data","web"], tech:"Python, Streamlit, Scikit-Learn", blurb:"Interactive Streamlit dashboard predicting car prices using feature engineering on 500k records."},
+    {id:'p4', title:"Big & Little Matching App", tags:["web","product"], tech:"MERN Stack", blurb:"Swipe-based matching app for campus mentoring; implemented compatibility scoring using shared interests and behavior."},
+    {id:'p5', title:"Travel Agency Database System", tags:["data","sql"], tech:"MariaDB, SQL", blurb:"Normalized schema, triggers, views, and integrity checks for automated reporting and fraud-prevention style checks."},
+    {id:'p6', title:"Transportation Data Dashboard", tags:["data","viz"], tech:"Tableau", blurb:"Interactive Tableau maps and time-series visualizations analyzing transit KPIs and trends."}
+  ];
+
+  /* ===== projects rendering & filtering ===== */
+  const grid = document.getElementById('projectsGrid');
+  const chips = Array.from(document.querySelectorAll('.chip'));
+  function renderProjects(filter='all'){
+    grid.innerHTML = '';
+    const filtered = PROJECTS.filter(p => filter === 'all' ? true : p.tags.includes(filter));
+    filtered.forEach(p=>{
+      const el = document.createElement('div');
+      el.className = 'project';
+      el.tabIndex = 0;
+      el.innerHTML = `<strong>${p.title}</strong>
+        <div class="muted" style="margin-top:10px; font-size:14px">${p.tech}</div>
+        <div style="margin-top:12px; color:var(--muted); font-size:15px; line-height: 1.5;">${p.blurb}</div>
+        <div class="tags">${p.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+      `;
+      el.addEventListener('click', ()=> openProjectModal(p));
+      grid.appendChild(el);
+    });
+  }
+  renderProjects();
+
+  chips.forEach(chip=>{
+    chip.addEventListener('click', ()=>{
+      chips.forEach(c=>c.classList.remove('active'));
+      chip.classList.add('active');
+      renderProjects(chip.dataset.filter);
+    });
+  });
+
+  function openProjectModal(p){
+    const dialog = document.createElement('div');
+    dialog.style.position='fixed';
+    dialog.style.inset='0';
+    dialog.style.zIndex=9999;
+    dialog.style.display='grid';
+    dialog.style.placeItems='center';
+    dialog.style.background='rgba(0,0,0,0.8)';
+    dialog.style.backdropFilter='blur(4px)';
+    dialog.innerHTML = `
+      <div style="width:90%;max-width:720px;background:${getComputedStyle(document.documentElement).getPropertyValue('--panel')};border:1px solid rgba(255,255,255,0.08);padding:28px;border-radius:16px; box-shadow: 0 20px 60px rgba(0,0,0,0.8);">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div>
+            <h3 style="margin:0;color:#eaf8ff; font-size: 22px;">${p.title}</h3>
+            <div style="color:var(--muted);margin-top:8px; font-size: 15px;">${p.tech}</div>
+          </div>
+          <button id="closeModal" style="background:transparent;border:1px solid rgba(255,255,255,0.06);padding:10px 16px;border-radius:10px;color:var(--muted); cursor: pointer; font-size: 14px;">Close</button>
+        </div>
+        <p style="color:var(--muted);margin-top:20px; font-size: 15px; line-height: 1.6;">${p.blurb}</p>
+        <div style="display:flex;gap:12px;margin-top:20px">
+        </div>
+      </div>
+    `;
+    document.body.appendChild(dialog);
+    dialog.querySelector('#closeModal').addEventListener('click', ()=> dialog.remove());
+    dialog.addEventListener('click', (e)=>{ if(e.target === dialog) dialog.remove(); });
+    dialog.querySelector('#demoBtn').addEventListener('click', ()=>{
+      alert('Demo placeholder — add links to Streamlit or live demos in your repo for full effect.');
+    });
+  }
+
+  /* ===== animate skill bars on load ===== */
+  window.addEventListener('load', ()=>{
+    document.querySelectorAll('.bar > i').forEach((el, i)=>{
+      setTimeout(()=> el.style.width = el.dataset.width || el.getAttribute('data-width') || '80%', 200 + i*80);
+    });
+  });
+
+ 
+  /* ===== contact CTA ===== */
+   document.getElementById('contactMe').addEventListener('click', ()=> {
+    document.getElementById('contact').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+
+  /* ===== NLP demo ===== */
+const posWords = {
+  "good":1, "great":1.5, "happy":1, "love":2, "positive":1.2, "improve":1, 
+  "excited":1.5, "success":2, "effective":1, "helpful":1, "benefit":1,
+  "amazing":2, "fantastic":2, "excellent":2
+};
+const negWords = {
+  "bad":1, "fail":1.5, "worse":1.2, "angry":1.3, "disappointed":1.5, "problem":1,
+  "error":1, "issue":1, "loss":1.5, "negative":1.2, "concern":1, "fraud":2,
+  "terrible":2, "horrible":2, "unhappy":1.5
+};
+
+function simpleAnalyze(text){
+  const t = text.toLowerCase();
+  const tokens = t.match(/[a-z0-9']+/g) || [];
+  let score = 0;
+  const highlights = [];
+  tokens.forEach(tok=>{
+    if(posWords[tok]) { 
+      score += posWords[tok]; 
+      highlights.push({tok,kind:'pos',weight:posWords[tok]});
+    }
+    if(negWords[tok]) { 
+      score -= negWords[tok]; 
+      highlights.push({tok,kind:'neg',weight:negWords[tok]});
+    }
+  });
+  const norm = tokens.length ? (score / Math.sqrt(tokens.length)) : 0;
+  let label = 'Neutral';
+  if(norm > 0.25) label = 'Positive';
+  if(norm < -0.25) label = 'Negative';
+  return {tokens,score:norm.toFixed(3),label,highlights};
+}
+
+// Run analysis
+document.getElementById('nlpRun').addEventListener('click', ()=>{
+  const txt = document.getElementById('nlpInput').value.trim();
+  if(!txt){ alert('Paste some text to analyze'); return; }
+  const res = simpleAnalyze(txt);
+
+  document.getElementById('nlpResult').textContent = 
+    `Score ${res.score}`;
+
+  const H = document.getElementById('highlights');
+  H.innerHTML = '';
+  res.highlights.forEach(h=>{
+    const span = document.createElement('span');
+    span.textContent = h.tok;
+    span.style.padding='6px 10px';
+    span.style.marginRight='6px';
+    span.style.marginBottom='6px';
+    span.style.borderRadius='6px';
+    span.style.display='inline-block';
+    span.style.fontFamily='var(--mono)';
+    // Font size and opacity based on weight
+    span.style.fontSize = `${14 + h.weight*3}px`;
+    span.style.opacity = 0.6 + 0.1*h.weight;
+    span.style.color = h.kind === 'pos' ? '#052d2f' : '#3d002b';
+    span.style.background = h.kind === 'pos' ? 
+      `linear-gradient(90deg,#8be9fd,#a6fff8)` : 
+      `linear-gradient(90deg,#ff79c6,#ffb3d9)`;
+    H.appendChild(span);
+  });
+});
+
+// Clear input
+document.getElementById('nlpClear').addEventListener('click', ()=>{
+  document.getElementById('nlpInput').value = '';
+  document.getElementById('nlpResult').textContent = 'No analysis yet';
+  document.getElementById('highlights').innerHTML = '';
+});
+
+// Add sample input for demo
+document.getElementById('nlpInput').value = 
+  "I love this project! It's amazing and very effective, but there is a minor issue with the interface.";
+
+
+
+  /* view projects scroll */
+  document.getElementById('viewProjects').addEventListener('click', ()=> {
+    document.getElementById('projects').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+
+  /* accessible focus on clickable project nodes */
+  document.addEventListener('click', e=>{
+    if(e.target.closest('.project')) e.target.closest('.project').focus();
+  });
+
+</script>
+</body>
+</html>
