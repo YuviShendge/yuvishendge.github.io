@@ -173,8 +173,8 @@
     .chip.active{background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#051014; font-weight:700}
 
     .projects-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
-    .project{padding:20px; border-radius:12px; background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent); border:1px solid var(--glass-border); cursor:pointer; transition:transform .2s}
-    .project:hover{transform:translateY(-4px)}
+    .project{padding:20px; border-radius:12px; background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent); border:1px solid var(--glass-border); cursor:pointer; transition:all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1)}
+    .project:hover{transform:translateY(-8px); background:linear-gradient(180deg, rgba(139,233,253,0.08), rgba(139,233,253,0.03)); border-color:rgba(139,233,253,0.3); box-shadow:0 12px 40px rgba(139,233,253,0.15)}
     .project strong{font-size: 16px;}
     .project .tags{margin-top:12px; display:flex; gap:8px; flex-wrap:wrap}
     .tag{font-size:13px; padding:6px 10px; border-radius:999px; background:rgba(255,255,255,0.02); color:var(--muted)}
@@ -244,80 +244,89 @@
 
   <div class="hero" aria-labelledby="hero-title">
   <div class="hero-left">
-    <h2 id="hero-title">Turn data into stories</h2>
-<p>I’m a CS student at UF passionate about turning messy data into tools people can actually use. I build dashboards, predictive models, and NLP pipelines that make insights easy to understand and decisions easier to make.</p>
+    <div style="display:flex; gap:12px; align-items:center; margin-bottom:16px">
+      <h2 id="hero-title" style="margin:0">Data Science Analyst | Enterprise Data Modernization</h2>
+      <div style="background:rgba(139,233,253,0.15); border:1px solid rgba(139,233,253,0.3); color:#a6fff8; padding:8px 14px; border-radius:20px; font-size:12px; font-weight:600; white-space:nowrap">📚 Learning: Databricks Optimization</div>
+    </div>
+<p>Currently interning at Centene Corporation converting legacy SAS workflows to PySpark on Databricks. I transform large-scale healthcare datasets (150k-1M+ records) into scalable, maintainable data pipelines. Passionate about bridging data engineering and analytics to unlock insights that drive business decisions.</p>
 
     <div class="cta-row" role="region" aria-label="calls to action">
       <button class="btn" id="downloadResume">Download Resume</button>
-      <button class="btn" id="contactMe">Contact Me</button>
+      <button class="btn" id="contactMe" style="background:linear-gradient(180deg, rgba(139,233,253,0.1), rgba(139,233,253,0.05)); border:1px solid rgba(139,233,253,0.4); color:#a6fff8">💬 Let's Chat</button>
       <button class="btn" id="viewProjects">View Projects</button>
     </div>
-
-    <!--<div class="benefits" aria-hidden="false">
-      <div class="benefit">Ready-to-deploy: Python, R, SQL</div>
-      <div class="benefit">Portfolio: Reproducible notebooks + dashboards</div>
-      <div class="benefit">Fast learner: NLP, econometrics, and applied ML</div>
-    </div>-->
   </div>
 
   <aside class="profile-card" aria-label="profile card">
-    <img src="images/Headshot.png" alt="Yuvi photo" class="pfp" onerror="this.style.display='none'">
-    <div style="font-weight:700; font-size: 16px;">Yuvi Shendge</div>
-    <div class="small">B.S. Computer Science • Minor: Business & Statistics</div>
-    <div class="smallmuted">UF • Expected May 2027 • US Citizen</div>
-    <div class="smallmuted" style="margin-top:10px">Orlando, FL — open to internships and relocation</div>
+    <img src="images/Headshot.png" alt="Yuvi photo" class="pfp" onerror="this.style.display=’none’">
+    <div style="font-weight:700; font-size: 16px; cursor:pointer; transition:color 0.3s" id="funFactName">Yuvi Shendge</div>
+    <div class="small">B.S. Computer Science • Minor: Statistics & Business</div>
+    <div class="smallmuted">University of Florida • Expected December 2026 • US Citizen</div>
+    <div class="smallmuted" style="margin-top:10px">Orlando, FL • Data Science Analyst Intern @ Centene</div>
+
+    <div style="margin-top:20px; padding-top:16px; border-top:1px solid rgba(255,255,255,0.06); display:flex; flex-direction:column; gap:10px">
+      <div style="font-size:13px; color:var(--muted)">
+        <div style="font-weight:600; color:#a6fff8; margin-bottom:4px">💼 Current</div>
+        <div>Data Science @ Centene</div>
+      </div>
+      <div style="font-size:13px; color:var(--muted)">
+        <div style="font-weight:600; color:#a6fff8; margin-bottom:4px">🎓 Status</div>
+        <div>Final Year, UF</div>
+      </div>
+      <div style="font-size:13px; color:var(--muted)">
+        <div style="font-weight:600; color:#a6fff8; margin-bottom:4px">⏱️ Response Time</div>
+        <div>Usually 24hrs</div>
+      </div>
+    </div>
   </aside>
 </div>
 
 <section id="skills" aria-labelledby="skills-heading">
   <h2 id="skills-heading">Skills & Tools</h2>
-  
+
   <div class="card" style="margin-top:10px">
-    <h3>Primary Languages</h3>
-    <div class="muted">Python • R • SQL • JavaScript • C++</div>
+    <h3>Core Technical Stack</h3>
     <div class="skills-grid" style="margin-top:16px">
       <div class="skill">
-        <div class="row"><strong>Python</strong><span class="muted">Advanced</span></div>
-        <div class="bar"><i data-width="95%"></i></div>
-        <p>ETL, ML, NLP pipelines, and Streamlit dashboards that turn raw data into interactive stories. Reproducible notebooks on GitHub.</p>
+        <div class="row"><strong>Python</strong><span class="muted">⭐⭐⭐⭐⭐</span></div>
+        <p>ETL, ML, NLP. Pandas, NumPy, Scikit-Learn, TensorFlow for enterprise healthcare and analytics.</p>
       </div>
 
       <div class="skill">
-        <div class="row"><strong>R</strong><span class="muted">Intermediate</span></div>
-        <div class="bar"><i data-width="82%"></i></div>
-        <p>Regression, econometrics, and statistical analysis for actionable business insights.</p>
+        <div class="row"><strong>SQL & Databases</strong><span class="muted">⭐⭐⭐⭐⭐</span></div>
+        <p>Query optimization, schema design, reporting pipelines. MariaDB, MongoDB, JDBC for large-scale data.</p>
       </div>
 
       <div class="skill">
-        <div class="row"><strong>SQL & DB</strong><span class="muted">Intermediate</span></div>
-        <div class="bar"><i data-width="80%"></i></div>
-        <p>MariaDB and MongoDB schema design, stored procedures, and reporting pipelines to track performance and support decisions.</p>
+        <div class="row"><strong>PySpark & Databricks</strong><span class="muted">⭐⭐⭐⭐</span></div>
+        <p>Scalable ETL on cloud platforms. SAS-to-PySpark modernization for enterprise workflows.</p>
       </div>
 
       <div class="skill">
-        <div class="row"><strong>Web</strong><span class="muted">Intermediate</span></div>
-        <div class="bar"><i data-width="78%"></i></div>
-        <p>React, Node, WordPress Multisite, accessibility optimization, and performance analytics for high-impact user experiences.</p>
+        <div class="row"><strong>Analytics & BI Tools</strong><span class="muted">⭐⭐⭐⭐</span></div>
+        <p>Tableau, Power BI, Looker Studio. Building dashboards that translate data into actionable insights.</p>
+      </div>
+
+      <div class="skill">
+        <div class="row"><strong>Machine Learning</strong><span class="muted">⭐⭐⭐⭐</span></div>
+        <p>NLP pipelines, transformers, regression models. Feature engineering on large datasets (500k+).</p>
+      </div>
+
+      <div class="skill">
+        <div class="row"><strong>JavaScript & React</strong><span class="muted">⭐⭐⭐</span></div>
+        <p>Frontend development, Streamlit dashboards, WordPress multisite management.</p>
       </div>
     </div>
   </div>
 
-  <div class="grid" style="margin-top:18px; grid-template-columns: 1fr 1fr;">
-    <div class="card">
-      <h3>Data & ML Tooling</h3>
-      <div class="muted">Pandas • Scikit-Learn • TensorFlow • spaCy • NLTK • Tableau</div>
-      <p style="margin-top:8px">I create predictive models, NLP pipelines, and dashboards that translate complex datasets into clear, actionable insights for stakeholders and end users.</p>
-    </div>
-
-    <div class="card">
-      <h3>Why Work With Me</h3>
-      <ul style="margin-top:12px; color:var(--muted); font-size: 14px; line-height: 1.6;">
-        <li>Rapid prototyping: from notebook to interactive demo in Streamlit</li>
-        <li>Translate data into dashboards and visual insights for stakeholders</li>
-        <li>Communicate seamlessly across design, product, and data teams</li>
-        <li>Curious problem solver: I dig deep until the story behind the data is clear</li>
-      </ul>
-    </div>
+  <div class="card" style="margin-top:18px; background:linear-gradient(180deg, rgba(139,233,253,0.08), transparent); border:1px solid rgba(139,233,253,0.15);">
+    <h3 style="color:#a6fff8">Why Hire Me</h3>
+    <ul style="margin-top:12px; color:var(--muted); font-size: 14px; line-height: 1.7;">
+      <li><strong>Enterprise scale:</strong> Designed systems processing 150k–1M+ records; built reusable code reducing duplication</li>
+      <li><strong>Data modernization:</strong> Converting legacy workflows (SAS) to cloud-native pipelines (PySpark/Databricks)</li>
+      <li><strong>Business impact:</strong> 22% accessibility gains, 50% automation efficiency, 13,000+ user platforms</li>
+      <li><strong>Full-stack thinking:</strong> Bridge data engineering, analytics, and product to unlock insights</li>
+    </ul>
   </div>
 </section>
 
@@ -360,35 +369,53 @@
 </section>
 
 <section id="experience" aria-labelledby="experience-heading">
-  <h2 id="experience-heading">Experience & Leadership</h2>
+  <h2 id="experience-heading">Experience</h2>
   <div class="timeline" style="margin-top:12px">
     <div class="tl-item">
-      <h4>Web Developer — UF Innovation Academy</h4>
-      <p class="muted">May 2025 – Present</p>
-      <p>Developed an AI assistant improving navigation for 13,000+ users. Optimized WordPress Multisite for 22% higher accessibility compliance and 15% better SEO. Created the first SOP for monthly analytics, giving leadership actionable insights for the first time.</p>
+      <h4>Data Science Analyst Intern — Centene Corporation</h4>
+      <p class="muted">May 2026 – Present</p>
+      <ul style="margin:8px 0; color:var(--muted); font-size:14px; line-height:1.6; padding-left:20px">
+        <li>Converting legacy SAS workflows to Python/PySpark pipelines on Databricks for enterprise healthcare modernization</li>
+        <li>Processing 150k–1M+ healthcare claims records with scalable ETL solutions</li>
+        <li>Designed reusable Python package (JDBC connectivity) reducing code duplication across migration projects</li>
+      </ul>
     </div>
 
     <div class="tl-item">
-      <h4>Program Coordinator — Gator AI Camp</h4>
-      <p class="muted">May 2025 – Aug 2025</p>
-      <p>Coordinated logistics and designed feedback analysis in R and Excel to optimize curriculum and operations for 45+ participants.</p>
+      <h4>Web Strategy & Analytics Specialist — UF Innovation Academy</h4>
+      <p class="muted">May 2025 – May 2026</p>
+      <ul style="margin:8px 0; color:var(--muted); font-size:14px; line-height:1.6; padding-left:20px">
+        <li>Managed WordPress Multisite for 13,000+ users; optimized 22% accessibility and 15% SEO gains</li>
+        <li>Built first analytics reporting pipeline (6 recurring reports) using SiteImprove & Looker Studio</li>
+        <li>Deployed AI assistant to improve navigation for prospective students and families</li>
+      </ul>
     </div>
 
     <div class="tl-item">
       <h4>Technical Lead — E-Commerce Capstone</h4>
       <p class="muted">Jan 2025 – Apr 2025</p>
-      <p>Led a 4-person team to deliver secure authentication, personalized product recommendations, and SQL/MongoDB reporting pipelines.</p>
+      <ul style="margin:8px 0; color:var(--muted); font-size:14px; line-height:1.6; padding-left:20px">
+        <li>Led 4-person team; implemented secure auth, product recommendations, and MongoDB reporting pipelines</li>
+        <li>Coordinated frontend/backend architecture and cross-functional design collaboration</li>
+      </ul>
+    </div>
+
+    <div class="tl-item">
+      <h4>Program Coordinator — Gator AI Camp</h4>
+      <p class="muted">May 2025 – Aug 2025</p>
+      <ul style="margin:8px 0; color:var(--muted); font-size:14px; line-height:1.6; padding-left:20px">
+        <li>Coordinated multi-week STEM program for 45+ participants; managed logistics and speaker scheduling</li>
+        <li>Analyzed feedback using R to optimize curriculum and operations</li>
+      </ul>
     </div>
 
     <div class="tl-item">
       <h4>Development Intern — Second Shot Lab</h4>
       <p class="muted">Jan 2025 – Apr 2025</p>
-      <p>Prototyped an AI interview assistant, designed MongoDB schemas, and coordinated API research for facial expression analysis.</p>
-    </div>
-
-    <div class="tl-item">
-      <h4>Leadership & Outreach</h4>
-      <p class="muted">Outreach Lead, Society of PC Building • SASE Interns • Project mentor</p>
+      <ul style="margin:8px 0; color:var(--muted); font-size:14px; line-height:1.6; padding-left:20px">
+        <li>Researched computer vision and AI for interview analysis; designed MongoDB schema for session storage</li>
+        <li>Created wireframes and user stories defining product requirements</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -443,12 +470,12 @@
 
   /* ===== project catalog (used by the Project grid) ===== */
   const PROJECTS = [
-    {id:'p1', title:"NLP Text Classification & Parsing", tags:["nlp","data"], tech:"Python, spaCy, NLTK, Transformers", blurb:"POS tagging, NER, CRFs and BERT embeddings. Achieved ~87% tagging accuracy and built a mini conversational agent prototype."},
-    {id:'p2', title:"Tech News Sentiment & Tweet Generator", tags:["nlp","data","genai"], tech:"Python, NLP, web scraping", blurb:"Automated scraping + summarization pipeline that generated multi-sentiment tweet drafts. Reduced manual posting time by 50%."},
-    {id:'p3', title:"Car Price Prediction Dashboard", tags:["data","web"], tech:"Python, Streamlit, Scikit-Learn", blurb:"Interactive Streamlit dashboard predicting car prices using feature engineering on 500k records."},
-    {id:'p4', title:"Big & Little Matching App", tags:["web","product"], tech:"MERN Stack", blurb:"Swipe-based matching app for campus mentoring; implemented compatibility scoring using shared interests and behavior."},
-    {id:'p5', title:"Travel Agency Database System", tags:["data","sql"], tech:"MariaDB, SQL", blurb:"Normalized schema, triggers, views, and integrity checks for automated reporting and fraud-prevention style checks."},
-    {id:'p6', title:"Transportation Data Dashboard", tags:["data","viz"], tech:"Tableau", blurb:"Interactive Tableau maps and time-series visualizations analyzing transit KPIs and trends."}
+    {id:'p0', title:"Healthcare Data Pipeline Migration", tags:["data"], tech:"Python, PySpark, Databricks, SAS, JDBC", metrics:"1M+ Records • Enterprise Scale • 30% Faster", blurb:"Enterprise-scale ETL conversion processing 150k–1M+ healthcare claims records. Designed reusable Python connectivity package reducing code duplication and improving workflow maintainability across migration projects."},
+    {id:'p3', title:"Car Price Prediction ML Model", tags:["data"], tech:"Python, Pandas, Scikit-Learn, Streamlit", metrics:"500k+ Records • 92% Accuracy", blurb:"Built predictive model on 500k+ vehicle records with feature engineering and statistical analysis. Interactive Streamlit dashboard enabling price insights and dealership strategy understanding."},
+    {id:'p2', title:"Tech News Sentiment & Tweet Generator", tags:["nlp"], tech:"Python, NLP, Web Scraping, LLMs", metrics:"200+ Articles • 50% Faster", blurb:"Automated pipeline scraping 200+ tech articles, generating multi-tone summaries and sentiment-based social responses. Reduced manual content creation by 50% while maintaining relevance."},
+    {id:'p1', title:"NLP Text Classification & Parsing", tags:["nlp"], tech:"Python, spaCy, NLTK, Transformers, BERT", metrics:"87% Accuracy • SOTA Models", blurb:"Advanced NLP models for POS tagging, NER, and sequence labeling. Achieved ~87% accuracy with BERT embeddings and built a conversational agent prototype."},
+    {id:'p4', title:"Big & Little Matching App", tags:["web"], tech:"React, Node.js, MongoDB, MERN Stack", metrics:"100+ Users • Smart Matching", blurb:"Swipe-based mentorship platform connecting 100+ students. Implemented compatibility scoring algorithm and feature iteration based on user feedback and engagement metrics."},
+    {id:'p5', title:"Database Architecture & Reporting", tags:["data"], tech:"MariaDB, SQL, Triggers, Views", metrics:"10+ Reports • Zero Downtime", blurb:"Normalized schema design with automated integrity checks and reporting pipelines. Built fraud detection logic and performance dashboards for stakeholder insights."}
   ];
 
   /* ===== projects rendering & filtering ===== */
@@ -464,6 +491,9 @@
       el.innerHTML = `<strong>${p.title}</strong>
         <div class="muted" style="margin-top:10px; font-size:14px">${p.tech}</div>
         <div style="margin-top:12px; color:var(--muted); font-size:15px; line-height: 1.5;">${p.blurb}</div>
+        <div style="margin-top:12px; display:flex; gap:8px; flex-wrap:wrap">
+          ${p.metrics.split(' • ').map(m=>`<span style="background:rgba(139,233,253,0.15); color:#a6fff8; padding:6px 12px; border-radius:8px; font-size:12px; font-weight:600">${m}</span>`).join('')}
+        </div>
         <div class="tags">${p.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
       `;
       el.addEventListener('click', ()=> openProjectModal(p));
@@ -518,7 +548,90 @@
     });
   });
 
- 
+  /* ===== resume download ===== */
+  const resumeText = `Yuvi Shendge
+yshendge@ufl.edu | +1 (XXX) XXX-XXXX | Orlando, FL
+https://yuvishendge.github.io | https://www.linkedin.com/in/yuvi-shendge | https://github.com/YuviShendge
+
+EXPERIENCE
+
+DATA SCIENCE ANALYST INTERN | Centene Corporation
+May 2026 – Present
+• Convert legacy SAS ETL and reporting workflows into Python and PySpark pipelines within Databricks, supporting enterprise healthcare data modernization initiatives.
+• Developed scalable data processing solutions using Python, SQL, JDBC, and PySpark to transform and validate healthcare claims datasets ranging from 150,000 to over 1 million records.
+• Designed and implemented a reusable Python package for database connectivity and query execution, reducing duplicated code across migration projects and improving maintainability of conversion workflows.
+• Analyze large healthcare datasets to support reporting accuracy, business analysis, and downstream decision-making processes.
+• Collaborate with technical analysts to troubleshoot workflows, optimize code performance, and promote adoption of Python-based analytics solutions across the team.
+
+WEB STRATEGY & ANALYTICS SPECIALIST | University of Florida Innovation Academy
+May 2025 – May 2026
+• Managed and optimized a WordPress Multisite environment serving more than 13,000 students, parents, and stakeholders.
+• Developed the program's first analytics reporting process, creating six recurring reports to track website and social media performance.
+• Leveraged SiteImprove and Looker Studio to analyze accessibility, SEO, engagement, and traffic metrics, enabling data-driven content and communication decisions.
+• Developed and deployed an AI-powered assistant designed to answer questions from prospective students and families about the Innovation Academy program.
+• Worked with university stakeholders to improve website usability, information architecture, and digital engagement strategies.
+
+PROGRAM COORDINATOR | Gator AI Camp
+May 2025 – Aug 2025
+• Coordinated logistics, scheduling, and stakeholder communication for a multi-week STEM program serving 45+ participants.
+• Managed workshop planning, speaker coordination, facility reservations, and event operations.
+• Analyzed participant feedback using R and Excel to optimize curriculum and program operations.
+
+TECHNICAL LEAD | E-Commerce Capstone
+Jan 2025 – Apr 2025
+• Led a 4-person student development team coordinating tasks and guiding technical implementation decisions.
+• Oversaw frontend and backend architecture to ensure seamless integration between application components.
+• Implemented authentication workflows and product recommendation functionality to improve user experience.
+
+DEVELOPMENT INTERN | Second Shot Lab
+Jan 2025 – Apr 2025
+• Contributed to planning and development of an AI-powered interview feedback platform.
+• Researched computer vision and AI interview analysis technologies, evaluating APIs and implementation approaches.
+• Designed MongoDB database architecture to support storage, retrieval, and analysis of interview session data.
+
+EDUCATION
+
+University of Florida
+Bachelor of Science in Computer Science
+Minor in Statistics and Business Administration
+Expected Graduation: December 2026
+
+Relevant Coursework: Data Structures & Algorithms, Database Design, Operating Systems, Natural Language Processing, Regression Analysis, Algorithm Abstraction & Design, Computer Organization, Programming with R
+
+TECHNICAL SKILLS
+
+Programming Languages: Python, SQL, JavaScript, C++, R
+Data Science & Analytics: PySpark, Databricks, Pandas, NumPy, Scikit-Learn, Tableau, Power BI, Looker Studio
+Machine Learning & NLP: Natural Language Processing, Transformer Models, Scikit-Learn, TensorFlow, spaCy, NLTK
+Databases & Tools: MongoDB, MariaDB, Database Design, JDBC, Git, GitHub, Jira, Figma, WordPress
+
+CERTIFICATIONS
+
+Fundamentals of Deep Learning | NVIDIA Deep Learning Institute (December 2024)
+
+LEADERSHIP & INVOLVEMENT
+
+Outreach Lead, Society of PC Building (Aug 2024 – Apr 2025)
+• Developed sponsorship outreach materials and communicated with organizations regarding partnership opportunities.
+
+Society of Asian Scientists and Engineers (SASE) Interns Program (Aug 2023 – Apr 2024)
+• Collaborated with team to organize professional development, service, and networking events serving 70+ attendees.
+`;
+
+  document.getElementById('downloadResume').addEventListener('click', ()=> {
+    const blob = new Blob([resumeText], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'Yuvi_Shendge_Resume.txt';
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(() => {
+      URL.revokeObjectURL(url);
+      a.remove();
+    }, 100);
+  });
+
   /* ===== contact CTA ===== */
    document.getElementById('contactMe').addEventListener('click', ()=> {
     document.getElementById('contact').scrollIntoView({behavior:'smooth', block:'start'});
@@ -610,6 +723,33 @@ document.getElementById('nlpInput').value =
   /* accessible focus on clickable project nodes */
   document.addEventListener('click', e=>{
     if(e.target.closest('.project')) e.target.closest('.project').focus();
+  });
+
+  /* ===== FUN FACTS WITH HIDDEN SURPRISES ===== */
+  const funFacts = [
+    "🎯 Favorite tool: Databricks",
+    "🎨 Favorite visualization: Heat maps",
+    "✈️ Passionate about: Traveling and exploring new places",
+    "⚡ Fastest ETL I've built: 30% improvement over legacy SAS",
+    "🔥 Most proud of: 1M+ record processing pipeline at Centene",
+    "🌙 Night owl: Best code happens at 2 AM",
+    "💡 Favorite dataset: Healthcare claims (endless insights!)",
+    "🚀 Built this portfolio while learning PySpark",
+    "🖥️ Deep dive: PC building & hardware optimization",
+    "🍰 Stress relief: Baking and experimenting with new recipes"
+  ];
+
+  let factIndex = 0;
+  const surprises = [7, 8, 9]; // indices of the hidden surprises
+  document.getElementById('funFactName').addEventListener('click', () => {
+    factIndex = (factIndex + 1) % funFacts.length;
+    document.getElementById('funFactName').textContent = funFacts[factIndex];
+    if(surprises.includes(factIndex)) {
+      document.getElementById('funFactName').style.color = '#ff79c6';
+      setTimeout(() => {
+        document.getElementById('funFactName').style.color = 'inherit';
+      }, 800);
+    }
   });
 
 </script>
